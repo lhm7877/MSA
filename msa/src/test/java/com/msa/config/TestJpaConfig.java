@@ -17,7 +17,7 @@ import java.util.Properties;
 
 // 인텔리제이 DB CLIENT 로 접속하기위해 H2 서버 환경을 설정
 @Configuration
-@EnableJpaRepositories("com.msa.repository")
+@EnableJpaRepositories("com.msa.jparepository")
 public class TestJpaConfig {
 
     private Properties jpaProperties(){

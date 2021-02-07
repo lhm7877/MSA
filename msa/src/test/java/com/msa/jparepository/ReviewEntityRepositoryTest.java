@@ -1,6 +1,6 @@
-package com.msa.repository;
+package com.msa.jparepository;
 
-import com.msa.entity.review.ReviewEntity;
+import com.msa.jpaentity.review.ReviewEntity;
 import com.msa.config.TestJpaConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

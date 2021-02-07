@@ -1,4 +1,4 @@
-package com.msa.entity.review;
+package com.msa.jpaentity.review;
 
 import lombok.AccessLevel;
 import lombok.Builder;

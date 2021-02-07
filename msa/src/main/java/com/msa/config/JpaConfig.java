@@ -7,18 +7,13 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
 // 인텔리제이 DB CLIENT 로 접속하기위해 H2 서버 환경을 설정
 @Configuration
-@EnableJpaRepositories("com.msa.repository")
+@EnableJpaRepositories("com.msa.jparepository")
 public class JpaConfig {
 
     @Bean
