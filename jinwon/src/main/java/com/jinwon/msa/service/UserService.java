@@ -5,9 +5,7 @@ import com.jinwon.msa.entity.UserEntity;
 import com.jinwon.msa.enums.AuthorityType;
 import com.jinwon.msa.message.ExceptionMessage;
 import com.jinwon.msa.repository.UserRepository;
-import com.jinwon.msa.streams.SendStream;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +24,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Transactional(readOnly = true)
 public class UserService implements UserDetailsService {
+
     @NonNull
     private final UserRepository userRepository;
 
@@ -47,4 +46,5 @@ public class UserService implements UserDetailsService {
 
         return new User(userEntity.getAccount(), userEntity.getUniquePass(), authorities);
     }
+
 }
