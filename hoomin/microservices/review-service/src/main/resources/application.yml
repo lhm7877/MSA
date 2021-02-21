@@ -1,6 +1,6 @@
-server.port=7002
+server.port: 7002
 
 logging:
-    level:
-        root: INFO
-        com.hoomin.microservices: DEBUG
+  level:
+    root: INFO
+    com.hoomin: DEBUG
