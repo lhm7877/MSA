@@ -33,8 +33,8 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
         Product product = integration.getProduct(productId);
         if (product == null) throw new NotFoundException("No product found for productId: " + productId);
 
+        // 추천 목록과 리뷰 목록은 못 가져왔더라도 경고 수준으로 로그 기록 (성공으로 간주)
         List<Recommendation> recommendations = integration.getRecommendations(productId);
-
         List<Review> reviews = integration.getReviews(productId);
 
         return createProductAggregate(product, recommendations, reviews, serviceUtil.getServiceAddress());

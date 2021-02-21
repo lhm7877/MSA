@@ -97,6 +97,7 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
         }
     }
 
+    // 추천 목록은 못 가져왔더라도 경고 수준으로 로그 기록 (성공으로 간주)
     public List<Recommendation> getRecommendations(int productId) {
 
         try {
@@ -114,6 +115,7 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
         }
     }
 
+    // 리뷰 목록은 못 가져왔더라도 경고 수준으로 로그 기록 (성공으로 간주)
     public List<Review> getReviews(int productId) {
 
         try {
