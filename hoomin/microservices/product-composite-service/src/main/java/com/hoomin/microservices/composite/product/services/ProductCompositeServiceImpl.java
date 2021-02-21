@@ -12,6 +12,9 @@ import com.hoomin.util.http.ServiceUtil;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 비즈니스 로직 계층 생략 -> 비즈니스 로직과 프로토콜별 코드가 같이 있음
+ */
 @RestController
 public class ProductCompositeServiceImpl implements ProductCompositeService {
 
