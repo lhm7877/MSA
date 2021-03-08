@@ -1,9 +1,6 @@
 package se.magnus.microservices.core.product.persistence;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -27,5 +24,12 @@ public class ProductEntity {
     private String name;
     private int weight;
 
+
+    @Builder
+    public ProductEntity(int productId, String name, int weight) {
+        this.productId = productId;
+        this.name = name;
+        this.weight = weight;
+    }
 
 }
