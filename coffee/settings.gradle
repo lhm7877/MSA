@@ -1,2 +1,4 @@
 rootProject.name = 'coffee'
+include ':microservices:product-composite-service'
 include 'api'
+include 'util'
