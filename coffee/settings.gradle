@@ -1,0 +1,6 @@
+rootProject.name = 'coffee'
+include 'api'
+include 'util'
+include 'microservice:product'
+include 'microservice:payment'
+
