@@ -33,6 +33,7 @@ api service util gateway
 - Webflux 활용
 - JPA 인프런 강의 김영한
 - 많은 트래픽을 감당할 수 있도록
+- api 기반 테스트 코드 작성 
 - 등등
 
 ### DB
