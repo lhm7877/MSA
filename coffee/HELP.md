@@ -6,9 +6,14 @@
 ## 선행지식
 Webclient, Mono, Flux react   
 https://www.youtube.com/watch?v=VeSHa_Xsd2U
+https://www.youtube.com/watch?v=2E_1yb8iLKk&t=2692s
 
 ## 목표
-1주차: 패키지 구조를 만들어본다
+- 1주차
+  - 패키지 구조를 만들어본다
+- 2주차 
+  - DB 설계, Webflux를 보고 컨트롤러 만든다. 
+  -  functional, annotation 방식 둘다 만들자.
 
 ### 프로젝트구성
 api service util gateway
@@ -38,3 +43,4 @@ api service util gateway
 
 ### DB
 각자 설계
+
