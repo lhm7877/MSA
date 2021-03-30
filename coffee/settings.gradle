@@ -1,4 +1,8 @@
 rootProject.name = 'coffee'
 include ':microservices:product-composite-service'
+include ':microservices:order-service'
+include ':microservices:payment-service'
+include ':microservices:review-service'
+include ':microservices:member-service'
 include 'api'
 include 'util'
