@@ -8,13 +8,14 @@ Webclient, Mono, Flux react
 https://www.youtube.com/watch?v=VeSHa_Xsd2U
 
 ## 목표
-1주차: 키지 구조를 만들어본다
+1주차: 패키지 구조를 만들어본다
 
 ### 프로젝트구성
 api service util gateway
 
 ### 서비스
-주문 상품 결제 회원 리뷰
+주문 상품 결제 회원 리뷰   
+![img.png](img.png)
 
 ### 요구사항
 - 주문을 받는다. 회원 번호를 header에 받는다 "X-User-Id"
@@ -28,6 +29,11 @@ api service util gateway
 - 회원 조회
 - 환불 기능
 - 주문시 옵션 설정
+- Rest API 활용
+- Webflux 활용
+- JPA 인프런 강의 김영한
+- 많은 트래픽을 감당할 수 있도록
+- 등등
 
 ### DB
 각자 설계
