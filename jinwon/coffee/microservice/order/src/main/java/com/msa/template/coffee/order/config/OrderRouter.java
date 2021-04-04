@@ -17,9 +17,10 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 public class OrderRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> routes(OrderCancelHandler handler) {
+    public RouterFunction<?> routes(OrderCancelHandler handler) {
         return RouterFunctions
-                .route(POST("/order/cancel").and(accept(MediaType.APPLICATION_JSON)), handler::cancel);
+                .route(POST("/order/cancel")
+                        .and(accept(MediaType.APPLICATION_JSON)), handler::cancel);
     }
 
 }
