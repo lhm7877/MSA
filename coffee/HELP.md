@@ -1,7 +1,7 @@
 # Coffee
 
 ## 컨벤션
-- gitmoji
+- GitMoji
 
 ## 선행지식
 Webclient, Mono, Flux react   
@@ -14,6 +14,13 @@ https://www.youtube.com/watch?v=2E_1yb8iLKk&t=2692s
 - 2주차 
   - DB 설계, Webflux를 보고 컨트롤러 만든다. 
   -  functional, annotation 방식 둘다 만들자.
+- 3주차
+  - DB 쿼리 각 MD 파일에 추가
+  - 서로가 다르게 알고 있는 각 서비스들 역할 생각해보기
+    - 맡은 서비스의 역할 MD파일에 글로 쭉 써보기
+  - Entity 만들기
+  - product-composite-service에 api 작성
+  - coffee 프로젝트로 옮기기
 
 ### 프로젝트구성
 api service util gateway
