@@ -2,6 +2,7 @@ package com.msa.template.coffee.api.core.order.service;
 
 import com.msa.template.coffee.api.core.order.rqrs.OrderCancelRq;
 import com.msa.template.coffee.api.core.order.rqrs.OrderCancelRs;
+import com.msa.template.coffee.api.core.order.rqrs.OrderListRs;
 import com.msa.template.coffee.api.core.order.rqrs.OrderRq;
 import com.msa.template.coffee.api.core.order.rqrs.OrderRs;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,7 @@ public interface OrderService {
 	Flux<OrderCancelRs> cancel(OrderCancelRq rq);
 
 	@GetMapping(
-			value    = "/order/{memberId}",
+			value    = "/order/list/{memberId}",
 			produces = "application/json")
-	Mono<OrderCancelRs> getList(@PathVariable int memberId);
+	Mono<OrderListRs> getList(@PathVariable int memberId);
 }
