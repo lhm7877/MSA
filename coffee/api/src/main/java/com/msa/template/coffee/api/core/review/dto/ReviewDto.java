@@ -1,7 +1,10 @@
 package com.msa.template.coffee.api.core.review.dto;
 
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 
+@Getter
 public class ReviewDto extends BaseDto {
 
     private long userId;
@@ -10,11 +13,11 @@ public class ReviewDto extends BaseDto {
     private int rating;
     private String createDate;
 
-    public ReviewDto(long userId, long productId, String contents, int rating, LocalDateTime createDate) {
+    public ReviewDto(long userId, long productId, String contents, int rating, LocalDateTime lastUpdateDate) {
         this.userId = userId;
         this.productId = productId;
         this.contents = contents;
         this.rating = rating;
-        this.createDate = localDateTimeToString(createDate);
+        this.createDate = localDateTimeToString(lastUpdateDate);
     }
 }

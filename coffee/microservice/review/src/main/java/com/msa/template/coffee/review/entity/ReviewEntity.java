@@ -1,8 +1,14 @@
 package com.msa.template.coffee.review.entity;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @Entity
 @Table(name = "review")
 public class ReviewEntity extends BaseTimeEntity{
