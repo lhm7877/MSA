@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.msa.template.coffee.api.core.product.ProductService;
 import com.msa.template.coffee.api.core.product.ProductVo;
 
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 	@Override
 	public Mono<ProductVo> getProduct(int productId) {
