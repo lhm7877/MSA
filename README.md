@@ -3,7 +3,7 @@
 #### 스터디원
 - [이후민](./hoomin/README.md)
 - 성락원
-- 이진원
+- [이진원](./jinwon/README.md)
 - 박정호
 - 이동기
 
