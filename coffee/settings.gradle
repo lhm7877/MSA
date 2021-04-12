@@ -4,4 +4,5 @@ include 'util'
 include 'microservice:product'
 include 'microservice:payment'
 include 'microservice:review'
+include 'microservice:coffee-composite-service'
 
