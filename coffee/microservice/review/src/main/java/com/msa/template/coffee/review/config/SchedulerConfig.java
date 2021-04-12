@@ -14,10 +14,11 @@ import java.util.concurrent.Executors;
 @Configuration
 public class SchedulerConfig {
 
+    @Value("${spring.datasource.hikari.maximum-pool-size}")
+    private Integer maximumPoolSize;
+
     @Bean
-    public Scheduler jdbcScheduler(
-            @Value("spring.datasource.hikari.maximum-pool-size") int maximumPoolSize
-    ) {
+    public Scheduler jdbcScheduler() {
         return Schedulers.fromExecutor(Executors.newFixedThreadPool(maximumPoolSize));
     }
 }

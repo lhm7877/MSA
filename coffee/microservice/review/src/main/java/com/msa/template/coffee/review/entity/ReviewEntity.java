@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class ReviewEntity extends BaseTimeEntity{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Version
