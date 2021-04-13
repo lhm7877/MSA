@@ -3,17 +3,17 @@ package com.msa.template.coffee.api.core.product;
 import java.math.BigDecimal;
 
 public class ProductVo {
-	private int productSn;
+	private int productId;
 	private String name;
 	private String content;
 	private BigDecimal price;
 
-	public int getProductSn() {
-		return productSn;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setProductSn(int productSn) {
-		this.productSn = productSn;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
 	public String getName() {
