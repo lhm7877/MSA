@@ -1,4 +1,4 @@
-package com.msa.template.coffee.api.core.order.rqrs;
+package com.msa.template.coffee.api.core.order.dto;
 
 import com.msa.template.coffee.api.core.order.constant.ResponseType;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public abstract class BaseRs {
+public abstract class BaseDto {
     private ResponseType responseType;
     private String errorMessage;
 

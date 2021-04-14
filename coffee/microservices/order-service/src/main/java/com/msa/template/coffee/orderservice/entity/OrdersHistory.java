@@ -71,4 +71,19 @@ public class OrdersHistory extends BaseEntity {
         return ordersHistory;
     }
 
+    public static OrdersHistory of(Orders orders) {
+        OrdersHistory ordersHistory = new OrdersHistory();
+
+        ordersHistory.orderId = orders.getId();
+        ordersHistory.memberId = orders.getMemberId();
+        ordersHistory.paymentType = orders.getPaymentType();
+        ordersHistory.originalPrice = orders.getOriginalPrice();
+        ordersHistory.discountPercent = orders.getDiscountPercent();
+        ordersHistory.discountedPrice = orders.getDiscountedPrice();
+        ordersHistory.cancelYn = orders.getCancelYn();
+        ordersHistory.orderGoods.addAll(orders.getOrderGoods());
+
+        return ordersHistory;
+    }
+
 }
