@@ -1,34 +1,32 @@
 package com.msa.template.coffee.orderservice.entity;
 
 import com.msa.template.coffee.api.core.order.enums.PaymentType;
-import lombok.Getter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.Index;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @Entity
-@Table(indexes = {
-        @Index(columnList = "memberId"),
-        @Index(columnList = "paymentType"),
-        @Index(columnList = "cancelYn")
-})
-public class Order extends BaseEntity {
+public class OrdersHistory extends BaseEntity {
 
     @Id
     private Long id;
+
+    private Long orderId;
 
     /* 주문 번호에 해당하는 회원은 변경 불가 */
     @Column(nullable = false, updatable = false)
     private Long memberId;
 
+    @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
 
     @Column(precision = 5, scale = 2)
@@ -42,14 +40,9 @@ public class Order extends BaseEntity {
 
     private boolean cancelYn;
 
-    private String cancelReason;
-
-    @OneToMany
+    @JoinColumn(name = "orders_history_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<OrderGoods> orderGoods = new ArrayList<>();
-
-    public boolean getCancelYn() {
-        return this.cancelYn;
-    }
 
     public List<OrderGoods> addOptions(List<OrderGoods> orderGoods) {
         this.orderGoods.addAll(orderGoods);
@@ -61,25 +54,21 @@ public class Order extends BaseEntity {
         return this.orderGoods;
     }
 
-    public void cancelOrder(String cancelReason) {
-        this.cancelYn = true;
-        this.cancelReason = cancelReason;
-    }
+    public static OrdersHistory create(Long orderId, Long memberId, PaymentType paymentType, BigDecimal originalPrice,
+                                       BigDecimal discountPercent, BigDecimal discountedPrice, boolean cancelYn,
+                                       List<OrderGoods> orderGoods) {
+        OrdersHistory ordersHistory = new OrdersHistory();
 
-    public static Order create(Long memberId, PaymentType paymentType, BigDecimal originalPrice,
-                               BigDecimal discountPercent, BigDecimal discountedPrice, boolean cancelYn,
-                               List<OrderGoods> orderGoods) {
-        Order order = new Order();
+        ordersHistory.orderId = orderId;
+        ordersHistory.memberId = memberId;
+        ordersHistory.paymentType = paymentType;
+        ordersHistory.originalPrice = originalPrice;
+        ordersHistory.discountPercent = discountPercent;
+        ordersHistory.discountedPrice = discountedPrice;
+        ordersHistory.cancelYn = cancelYn;
+        ordersHistory.orderGoods.addAll(orderGoods);
 
-        order.memberId = memberId;
-        order.paymentType = paymentType;
-        order.originalPrice = originalPrice;
-        order.discountPercent = discountPercent;
-        order.discountedPrice = discountedPrice;
-        order.cancelYn = cancelYn;
-        order.orderGoods.addAll(orderGoods);
-
-        return order;
+        return ordersHistory;
     }
 
 }
