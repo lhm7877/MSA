@@ -2,7 +2,7 @@ package com.msa.template.coffee.orderservice.services;
 
 import com.msa.template.coffee.api.core.order.dto.OrderCancelDto;
 import com.msa.template.coffee.api.core.order.dto.OrderDto;
-import com.msa.template.coffee.api.core.order.dto.OrderListDto;
+import com.msa.template.coffee.api.core.order.dto.OrderLoadDto;
 import com.msa.template.coffee.api.core.order.dto.SuccessDto;
 import com.msa.template.coffee.api.core.order.service.OrderService;
 import com.msa.template.coffee.orderservice.entity.Orders;
@@ -13,10 +13,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
-import java.util.Optional;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -36,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
      * - E999 : 기타 에러 메세지 참조
      */
     @Override
-    public Mono<SuccessDto> order(OrderDto orderDto) {
+    public Flux<SuccessDto> order(OrderDto orderDto) {
     	/*
          API member service
          checkMemberSn();
@@ -66,7 +65,7 @@ public class OrderServiceImpl implements OrderService {
 
         SuccessDto rs = new SuccessDto();
 
-		return Mono.just(rs);
+		return Flux.just(rs);
     }
 
     @Override
@@ -101,13 +100,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Mono<OrderListDto> getList(int memberId) {
+    public Flux<OrderLoadDto> getList(int memberId) {
         /*
          API member service
          checkMemberSn();
         */
 
-        return ordersRepository.findAllByMemberId(memberId);
+        List<Orders> orders = ordersRepository.findAllByMemberId(memberId);
+        List<OrderLoadDto> orderLoads = orderMapper.apiToEntity(orders);
+
+        return asyncFlux(orderLoads);
     }
 
     private <T> Flux<T> asyncFlux(Iterable<T> iterable) {

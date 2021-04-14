@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class OrderListDto {
+public class OrderLoadDto {
 
     private Long id;
     private Long memberId;
