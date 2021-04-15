@@ -18,14 +18,14 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductMapper mapper;
 
 	@Override
-	public Mono<ProductDto> getProduct(int productId) {
+	public Mono<ProductVo> getProduct(int productId) {
 		return repository.findByProductId(productId)
 			.switchIfEmpty(Mono.error(new RuntimeException("없어")))
 			.map(mapper::entityToApi);
 	}
 
 	@Override
-	public Flux<ProductDto> getProducts() {
+	public Flux<ProductVo> getProducts() {
 		return null;
 	}
 }
