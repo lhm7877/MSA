@@ -1,0 +1,6 @@
+include ':api'
+include ':microservices:order'
+include ':microservices:review'
+include ':microservices:customer'
+include ':microservices:payment'
+include ':microservices:goods'
