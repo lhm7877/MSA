@@ -10,10 +10,10 @@ public interface ProductService {
 	@GetMapping(
 		value    = "/product/{productId}",
 		produces = "application/json")
-	Mono<ProductVo> getProduct(@PathVariable int productId);
+	Mono<ProductDto> getProduct(@PathVariable int productId);
 
 	@GetMapping(
 		value    = "/products",
 		produces = "application/json")
-	Flux<ProductVo> getProducts();
+	Flux<ProductDto> getProducts();
 }

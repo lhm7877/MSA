@@ -2,7 +2,7 @@ package com.msa.template.coffee.api.core.product;
 
 import java.math.BigDecimal;
 
-public class ProductVo {
+public class ProductDto {
 	private int productId;
 	private String name;
 	private String content;
