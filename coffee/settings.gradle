@@ -7,3 +7,5 @@ include ':microservices:order-composite-service'
 include ':microservices:payment-service'
 include ':microservices:review-service'
 include ':microservices:member-service'
+include 'review-service'
+
