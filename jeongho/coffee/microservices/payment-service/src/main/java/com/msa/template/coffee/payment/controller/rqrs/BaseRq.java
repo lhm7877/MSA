@@ -6,5 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BaseRq {
-    Integer memberId;
+    private Integer memberId;
 }

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PaymentRq extends BaseRq{
-    PaymentType paymentType;
-    Integer price;
-    String menu;
+    private PaymentType paymentType;
+    private Integer price;
+    private String menu;
 }

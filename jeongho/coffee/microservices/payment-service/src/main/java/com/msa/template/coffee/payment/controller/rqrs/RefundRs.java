@@ -7,5 +7,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RefundRs extends BaseRs{
-    RefundCode refundCode;
+    private RefundCode refundCode;
 }

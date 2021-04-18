@@ -18,12 +18,12 @@ public class PaymentCodeDefinition {
 
         @Override
         public String getCode() {
-            return name();
+            return null;
         }
 
         @Override
         public String getTitle() {
-            return this.title;
+            return null;
         }
     }
 
