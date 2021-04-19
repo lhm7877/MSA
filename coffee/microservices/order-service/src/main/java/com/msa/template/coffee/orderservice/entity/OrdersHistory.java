@@ -71,6 +71,7 @@ public class OrdersHistory extends BaseEntity {
         return ordersHistory;
     }
 
+    // TODO 이후민 : of 메소드명 좋은거같아요 그런데 mapstruct를 사용할 수도 있지 않을까요?
     public static OrdersHistory of(Orders orders) {
         OrdersHistory ordersHistory = new OrdersHistory();
 

@@ -56,6 +56,7 @@ public class Orders extends BaseEntity {
         return this.cancelYn;
     }
 
+    //TODO 이후민 : Orders에 addoptions랑 OrderGoods에 addoptions는 어떤 차이가 있는거에요?
     public List<OrderGoods> addOptions(List<OrderGoods> orderGoods) {
         this.orderGoods.addAll(orderGoods);
         return this.orderGoods;
