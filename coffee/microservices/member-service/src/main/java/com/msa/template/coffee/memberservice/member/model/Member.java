@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Data
 @Getter
 @Document
+/* TODO 요긴 setter 없는데 빈 생성자 만드는 이유는 뭐예용? */
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
