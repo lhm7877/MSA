@@ -1,32 +1,39 @@
 package com.msa.template.coffee.memberservice.auth.service;
 
 import com.msa.template.coffee.memberservice.auth.dto.request.LoginRequest;
+import com.msa.template.coffee.memberservice.auth.dto.request.SignupRequest;
 import com.msa.template.coffee.memberservice.auth.dto.response.LoginResponse;
-import com.msa.template.coffee.memberservice.auth.exception.LoginFailedException;
-import com.msa.template.coffee.memberservice.member.model.Member;
-import lombok.AllArgsConstructor;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
+import com.msa.template.coffee.memberservice.auth.dto.response.SignupResponse;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.nio.file.Files;
-
-@Service
-public class AuthService {
+public interface AuthService {
     
-    private final ResourceLoader resourceLoader;
+    @PostMapping(
+            value = "/auth/login",
+            produces = "application/json"
+    )
+    Mono<LoginResponse> login(@PathVariable LoginRequest request);
     
-    public AuthService(ResourceLoader resourceLoader) {
-        this.resourceLoader = resourceLoader;
-    }
+    @PostMapping(
+            value = "/auth/sigiup",
+            produces = "application/json"
+    )
+    Mono<SignupResponse> signup(@PathVariable SignupRequest request);
     
-    public Flux<LoginResponse> login(LoginRequest loginRequest) {
-        try {
-            return Flux.empty();
-        } catch (LoginFailedException e) {
-            return Flux.empty();
-        }
-    }
+//    private final ResourceLoader resourceLoader;
+    
+//    public AuthService(ResourceLoader resourceLoader) {
+//        this.resourceLoader = resourceLoader;
+//    }
+    
+//    public Flux<LoginResponse> login(LoginRequest loginRequest) {
+//        try {
+//            return Flux.empty();
+//        } catch (LoginFailedException e) {
+//            return Flux.empty();
+//        }
+//    }
     
 }
