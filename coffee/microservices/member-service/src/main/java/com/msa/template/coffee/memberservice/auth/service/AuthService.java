@@ -17,7 +17,7 @@ public interface AuthService {
     Mono<LoginResponse> login(@PathVariable LoginRequest request);
     
     @PostMapping(
-            /* TODO 오타 쟁이 */
+            /* XXX 오타 쟁이 */
             value = "/auth/sigiup",
             produces = "application/json"
     )

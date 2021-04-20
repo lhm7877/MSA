@@ -20,7 +20,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-// TODO 이후민 : ProductCompositerSerivce쪽에도 구현이 필요해 보여요
+// XXX 이후민 : ProductCompositerSerivce쪽에도 구현이 필요해 보여요
 public class OrderServiceImpl implements OrderService {
 
     private final OrdersRepository ordersRepository;
@@ -56,8 +56,8 @@ public class OrderServiceImpl implements OrderService {
         */
 
         Orders orders = orderMapper.apiToEntity(orderDto);
-        // TODO 이후민 : 이부분은 동기적으로 실행될거같은데 스케쥴러같은 방식을 사용해서 비동기적으로 처리 할 수 있을까요?
-        // TODO 이후민 : https://itstory.tk/entry/Spring-Webflux-JDBC%ED%98%B9%EC%9D%80-blocking-call-%ED%95%B8%EB%93%A4%EB%A7%81-%EB%B0%A9%EB%B2%95
+        // XXX 이후민 : 이부분은 동기적으로 실행될거같은데 스케쥴러같은 방식을 사용해서 비동기적으로 처리 할 수 있을까요?
+        // XXX 이후민 : https://itstory.tk/entry/Spring-Webflux-JDBC%ED%98%B9%EC%9D%80-blocking-call-%ED%95%B8%EB%93%A4%EB%A7%81-%EB%B0%A9%EB%B2%95
         Orders savedOrders = ordersRepository.save(orders);
 
         /*

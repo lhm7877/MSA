@@ -19,7 +19,8 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-//TODO 이후민 : 책에서처런 이름을 service로 통일하는건 어때요? webflux는 MVC가 아니니까 controller가 꼭 필요하진 않을거 같아요
+//XXX 이후민 : 책에서처런 이름을 service로 통일하는건 어때요? webflux는 MVC가 아니니까 controller가 꼭 필요하진 않을거 같아요
+// 작은 프로젝트니까 service만드로 해도 될거같지만 reviewservice를 controller로 바꾸고 service를 따로 만드는것도 좋아보인다.
 public class ReviewController implements ReviewService{
 
     private final Scheduler scheduler;

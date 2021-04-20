@@ -19,7 +19,7 @@ import java.util.List;
 @Table(indexes = {
         @Index(columnList = "menuId")
 })
-//TODO 이후민 : entity는 suffix로 Entity 붙이는건 어때요?
+//XXX 이후민 : entity는 suffix로 Entity 붙이는건 어때요?
 public class OrderGoods {
 
     @Id
@@ -30,7 +30,7 @@ public class OrderGoods {
 
     private Long parentMenuId;
 
-    //TODO 이후민 : @Embedded 사용해보는건 어때요?
+    //XXX 이후민 : @Embedded 사용해보는건 어때요?
     @Column(precision = 5, scale = 2)
     private BigDecimal originalPrice;
 
@@ -40,7 +40,7 @@ public class OrderGoods {
     @Column(precision = 5, scale = 2)
     private BigDecimal discountedPrice;
 
-    //TODO 이후민 : 일급 컬렉션을 사용해보는건 어때요? https://bgpark.tistory.com/156
+    //XXX 이후민 : 일급 컬렉션을 사용해보는건 어때요? https://bgpark.tistory.com/156
     @JoinColumn(name = "order_goods_id")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<OrderGoods> options = new ArrayList<>();
