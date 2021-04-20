@@ -72,6 +72,7 @@ public class OrdersHistory extends BaseEntity {
     }
 
     // XXX 이후민 : of 메소드명 좋은거같아요 그런데 mapstruct를 사용할 수도 있지 않을까요?
+    // XXX 이진원 : 으음.. rq값으로 받지 않는건데도 mapstruct를 쓰는건 오히려 헷갈릴거 같아요! 딱 매퍼를 사용하는건 요청 값 혹은 응답 값에만 사용하고 싶어요.
     public static OrdersHistory of(Orders orders) {
         OrdersHistory ordersHistory = new OrdersHistory();
 

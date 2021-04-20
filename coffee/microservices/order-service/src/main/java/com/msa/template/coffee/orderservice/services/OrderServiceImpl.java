@@ -58,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
         Orders orders = orderMapper.apiToEntity(orderDto);
         // XXX 이후민 : 이부분은 동기적으로 실행될거같은데 스케쥴러같은 방식을 사용해서 비동기적으로 처리 할 수 있을까요?
         // XXX 이후민 : https://itstory.tk/entry/Spring-Webflux-JDBC%ED%98%B9%EC%9D%80-blocking-call-%ED%95%B8%EB%93%A4%EB%A7%81-%EB%B0%A9%EB%B2%95
+        // XXX 이후민 : 해당 로직들은 아래 스케쥴러 방식 처리와 동일하게 작업할 예정이에요. 예시로 적어놨어요 기존 소스 참조해주세요!
         Orders savedOrders = ordersRepository.save(orders);
 
         /*
