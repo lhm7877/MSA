@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface OrderService {
 	@PostMapping(
 		value    = "/order",
 		produces = "application/json")
-	Flux<SuccessDto> order(OrderDto rq);
+	Mono<SuccessDto> order(OrderDto rq);
 
 	@GetMapping(
 		value    = "/order/cancel",
