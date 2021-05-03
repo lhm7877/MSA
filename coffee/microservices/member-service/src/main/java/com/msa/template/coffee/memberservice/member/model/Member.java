@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Document
 /* XXX 요긴 setter 없는데 빈 생성자 만드는 이유는 뭐예용? */
 // setter를 사용하지 않고 update 등에 필요한거 명시적으로 set하려고
+// 빈생성자는 지양 이유는 찾자
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
