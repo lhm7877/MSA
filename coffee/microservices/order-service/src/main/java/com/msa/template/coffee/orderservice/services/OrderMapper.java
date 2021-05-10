@@ -15,12 +15,12 @@ public interface OrderMapper {
 	OrderDto entityToApi(OrdersEntity ordersEntity);
 
 	@Mappings({
-		@Mapping(target = "id", ignore = true)
+//		@Mapping(target = "Id", ignore = true)
 	})
 	OrdersEntity apiToEntity(OrderDto api);
 
 	@Mappings({})
-	List<OrderLoadDto> apiToEntity(List<OrdersEntity> api);
+	OrderLoadDto apiToEntity(OrdersEntity api);
 
 
 }

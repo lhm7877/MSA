@@ -16,6 +16,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -73,8 +74,9 @@ public class OrderServiceImpl implements OrderService {
         /*
          cancelOrder()
         */
-        OrdersEntity ordersEntity = ordersRepository.findByIdAndMemberId(orderCancelDto.getOrderSn(), orderCancelDto.getMemberSn())
-                .orElseGet(com.msa.template.coffee.orderservice.entity.OrdersEntity::new);
+        OrdersEntity ordersEntity =
+                ordersRepository.findByIdAndMemberId(orderCancelDto.getOrderId(), orderCancelDto.getMemberId())
+                        .orElseGet(com.msa.template.coffee.orderservice.entity.OrdersEntity::new);
 
         ordersEntity.cancelOrder(orderCancelDto.getCancelReason());
 
@@ -97,7 +99,12 @@ public class OrderServiceImpl implements OrderService {
         */
 
         List<OrdersEntity> orders = ordersRepository.findAllByMemberId(memberId);
-        List<OrderLoadDto> orderLoads = orderMapper.apiToEntity(orders);
+
+        List<OrderLoadDto> orderLoads = new ArrayList<>();
+
+        for (OrdersEntity order : orders) {
+            orderLoads.add(orderMapper.apiToEntity(order));
+        }
 
         return asyncFlux(orderLoads);
     }

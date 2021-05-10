@@ -19,7 +19,6 @@ import java.util.List;
 @Table(indexes = {
         @Index(columnList = "menuId")
 })
-//XXX 이후민 : entity는 suffix로 Entity 붙이는건 어때요?
 public class OrderGoodsEntity {
 
     @Id
@@ -40,7 +39,6 @@ public class OrderGoodsEntity {
     @Column(precision = 5, scale = 2)
     private BigDecimal discountedPrice;
 
-    //XXX 이후민 : 일급 컬렉션을 사용해보는건 어때요? https://bgpark.tistory.com/156
     @JoinColumn(name = "order_goods_id")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<OrderGoodsEntity> options = new ArrayList<>();
