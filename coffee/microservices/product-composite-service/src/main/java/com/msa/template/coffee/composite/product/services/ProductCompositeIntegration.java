@@ -1,21 +1,23 @@
 package com.msa.template.coffee.composite.product.services;
 
+import static reactor.core.publisher.Flux.*;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.reactive.function.client.WebClient;
+
 import com.msa.template.coffee.api.core.order.dto.OrderCancelDto;
 import com.msa.template.coffee.api.core.order.dto.OrderDto;
 import com.msa.template.coffee.api.core.order.dto.OrderLoadDto;
 import com.msa.template.coffee.api.core.order.dto.SuccessDto;
 import com.msa.template.coffee.api.core.order.service.OrderService;
-import com.msa.template.coffee.api.core.product.ProductService;
 import com.msa.template.coffee.api.core.product.ProductDto;
+import com.msa.template.coffee.api.core.product.ProductService;
 import com.msa.template.coffee.api.core.review.dto.ReviewDto;
 import com.msa.template.coffee.api.core.review.service.ReviewService;
+
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import static reactor.core.publisher.Flux.empty;
 @Slf4j
 public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService {
 
@@ -41,19 +43,6 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 				.log()
 				.onErrorResume(error -> empty());
 
-	}
-
-	@Override
-	public Flux<ReviewDto> getReviewsByUserId(int userId) {
-		String url = reviewServiceUrl + "/review?userId=" + userId;
-
-		// log.debug("API URL : ", url);
-		return webClient.get()
-				.uri(url)
-				.retrieve()
-				.bodyToFlux(ReviewDto.class)
-				.log()
-				.onErrorResume(error -> empty());
 	}
 
 	@Override
