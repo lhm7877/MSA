@@ -7,9 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderCancelDto {
+
     @NonNull
-    private Long orderSn;
+    private Long orderId;
     @NonNull
-    private Long memberSn;
+    private Long memberId;
     private String cancelReason;
+
 }

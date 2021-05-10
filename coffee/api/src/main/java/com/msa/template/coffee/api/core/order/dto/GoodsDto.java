@@ -10,8 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 public class GoodsDto {
-    private Long menuSn;
-    private Long parentMenuSn;
+    private Long menuId;
+    private Long parentMenuId;
     private BigDecimal originalPrice;
     private BigDecimal discountPercent;
     private BigDecimal discountedPrice;
