@@ -16,9 +16,5 @@ public interface ProductMapper {
 
 	ProductDto entityToApi(ProductEntity entity);
 
-	@Mappings({
-		@Mapping(target = "id", ignore = true),
-		@Mapping(target = "version", ignore = true)
-	})
 	ProductEntity apiToEntity(ProductDto api);
 }

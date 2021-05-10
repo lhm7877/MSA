@@ -26,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Flux<ProductDto> getProducts() {
-		return null;
+		return repository.findAll()
+			.map(mapper::entityToApi);
 	}
 }
