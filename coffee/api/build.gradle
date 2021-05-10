@@ -31,10 +31,6 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 }
 
-test {
-	useJUnitPlatform()
-}
-
 dependencyManagement {
 	imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
 }

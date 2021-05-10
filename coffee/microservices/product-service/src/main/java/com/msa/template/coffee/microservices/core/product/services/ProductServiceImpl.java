@@ -1,10 +1,10 @@
-package com.msa.template.coffee.productservice.services;
+package com.msa.template.coffee.microservices.core.product.services;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.msa.template.coffee.api.core.product.ProductService;
 import com.msa.template.coffee.api.core.product.ProductDto;
-import com.msa.template.coffee.productservice.persistence.ProductRepository;
+import com.msa.template.coffee.api.core.product.ProductService;
+import com.msa.template.coffee.microservices.core.product.persistence.ProductRepository;
 
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -18,14 +18,14 @@ public class ProductServiceImpl implements ProductService {
 	private final ProductMapper mapper;
 
 	@Override
-	public Mono<ProductVo> getProduct(int productId) {
+	public Mono<ProductDto> getProduct(int productId) {
 		return repository.findByProductId(productId)
 			.switchIfEmpty(Mono.error(new RuntimeException("없어")))
 			.map(mapper::entityToApi);
 	}
 
 	@Override
-	public Flux<ProductVo> getProducts() {
+	public Flux<ProductDto> getProducts() {
 		return null;
 	}
 }

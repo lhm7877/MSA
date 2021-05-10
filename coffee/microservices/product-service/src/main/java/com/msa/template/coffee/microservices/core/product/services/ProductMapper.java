@@ -1,11 +1,11 @@
-package com.msa.template.coffee.productservice.services;
+package com.msa.template.coffee.microservices.core.product.services;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-import com.msa.template.coffee.api.core.product.ProductVo;
-import com.msa.template.coffee.productservice.persistence.ProductEntity;
+import com.msa.template.coffee.api.core.product.ProductDto;
+import com.msa.template.coffee.microservices.core.product.persistence.ProductEntity;
 
 //XXX:
 // dto <-> entity 간에 필드명이 다르지만 매핑시키고자 할때는 어떤씩으로 사용하는지.
@@ -14,11 +14,11 @@ import com.msa.template.coffee.productservice.persistence.ProductEntity;
 @Mapper(componentModel = "spring") 	// bean으로 만듦
 public interface ProductMapper {
 
-	ProductVo entityToApi(ProductEntity entity);
+	ProductDto entityToApi(ProductEntity entity);
 
 	@Mappings({
 		@Mapping(target = "id", ignore = true),
 		@Mapping(target = "version", ignore = true)
 	})
-	ProductEntity apiToEntity(ProductVo api);
+	ProductEntity apiToEntity(ProductDto api);
 }
