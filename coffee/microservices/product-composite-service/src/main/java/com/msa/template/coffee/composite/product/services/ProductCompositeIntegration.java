@@ -1,4 +1,4 @@
-package com.msa.template.coffee.ordercompositeservice.services;
+package com.msa.template.coffee.composite.product.services;
 
 import com.msa.template.coffee.api.core.order.dto.OrderCancelDto;
 import com.msa.template.coffee.api.core.order.dto.OrderDto;
@@ -6,7 +6,7 @@ import com.msa.template.coffee.api.core.order.dto.OrderLoadDto;
 import com.msa.template.coffee.api.core.order.dto.SuccessDto;
 import com.msa.template.coffee.api.core.order.service.OrderService;
 import com.msa.template.coffee.api.core.product.ProductService;
-import com.msa.template.coffee.api.core.product.ProductVo;
+import com.msa.template.coffee.api.core.product.ProductDto;
 import com.msa.template.coffee.api.core.review.dto.ReviewDto;
 import com.msa.template.coffee.api.core.review.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	public Flux<ReviewDto> getReviewsByProductId(int productId) {
 		String url = reviewServiceUrl + "/review?productId=" + productId;
 
-		log.debug("API URL : ", url);
+		// log.debug("API URL : ", url);
 		return webClient.get()
 				.uri(url)
 				.retrieve()
@@ -47,7 +47,7 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	public Flux<ReviewDto> getReviewsByUserId(int userId) {
 		String url = reviewServiceUrl + "/review?userId=" + userId;
 
-		log.debug("API URL : ", url);
+		// log.debug("API URL : ", url);
 		return webClient.get()
 				.uri(url)
 				.retrieve()
@@ -57,13 +57,13 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	}
 
 	@Override
-	public Mono<ProductVo> getProduct(int productId) {
+	public Mono<ProductDto> getProduct(int productId) {
 		// to ProductServiceImpl
 		return null;
 	}
 
 	@Override
-	public Flux<ProductVo> getProducts() {
+	public Flux<ProductDto> getProducts() {
 		return null;
 	}
 

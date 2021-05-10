@@ -1,10 +1,10 @@
-package com.msa.template.coffee.api;
+package com.msa.template.coffee.microservices.composite.product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ApiApplicationTests {
+// @SpringBootTest
+class ProductCompositeServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

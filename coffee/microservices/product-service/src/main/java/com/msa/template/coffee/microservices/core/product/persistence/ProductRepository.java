@@ -1,4 +1,4 @@
-package com.msa.template.coffee.productservice.persistence;
+package com.msa.template.coffee.microservices.core.product.persistence;
 
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
