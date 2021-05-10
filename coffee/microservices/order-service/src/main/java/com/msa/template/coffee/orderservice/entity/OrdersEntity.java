@@ -23,7 +23,7 @@ import java.util.List;
         @Index(columnList = "memberId"),
         @Index(columnList = "paymentType")
 })
-public class Orders extends BaseEntity {
+public class OrdersEntity extends BaseEntity {
 
     @Id
     private Long id;
@@ -50,21 +50,21 @@ public class Orders extends BaseEntity {
 
     @JoinColumn(name = "orders_id")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private final List<OrderGoods> orderGoods = new ArrayList<>();
+    private final List<OrderGoodsEntity> orderGoodEntities = new ArrayList<>();
 
     public boolean getCancelYn() {
         return this.cancelYn;
     }
 
     //XXX 이후민 : Orders에 addoptions랑 OrderGoods에 addoptions는 어떤 차이가 있는거에요?
-    public List<OrderGoods> addOptions(List<OrderGoods> orderGoods) {
-        this.orderGoods.addAll(orderGoods);
-        return this.orderGoods;
+    public List<OrderGoodsEntity> addOptions(List<OrderGoodsEntity> orderGoodEntities) {
+        this.orderGoodEntities.addAll(orderGoodEntities);
+        return this.orderGoodEntities;
     }
 
-    public List<OrderGoods> removeOptions(List<OrderGoods> orderGoods) {
-        this.orderGoods.removeAll(orderGoods);
-        return this.orderGoods;
+    public List<OrderGoodsEntity> removeOptions(List<OrderGoodsEntity> orderGoodEntities) {
+        this.orderGoodEntities.removeAll(orderGoodEntities);
+        return this.orderGoodEntities;
     }
 
     public void cancelOrder(String cancelReason) {
@@ -72,20 +72,20 @@ public class Orders extends BaseEntity {
         this.cancelReason = cancelReason;
     }
 
-    public static Orders create(Long memberId, PaymentType paymentType, BigDecimal originalPrice,
-                                BigDecimal discountPercent, BigDecimal discountedPrice, boolean cancelYn,
-                                List<OrderGoods> orderGoods) {
-        Orders orders = new Orders();
+    public static OrdersEntity create(Long memberId, PaymentType paymentType, BigDecimal originalPrice,
+                                      BigDecimal discountPercent, BigDecimal discountedPrice, boolean cancelYn,
+                                      List<OrderGoodsEntity> orderGoodEntities) {
+        OrdersEntity ordersEntity = new OrdersEntity();
 
-        orders.memberId = memberId;
-        orders.paymentType = paymentType;
-        orders.originalPrice = originalPrice;
-        orders.discountPercent = discountPercent;
-        orders.discountedPrice = discountedPrice;
-        orders.cancelYn = cancelYn;
-        orders.orderGoods.addAll(orderGoods);
+        ordersEntity.memberId = memberId;
+        ordersEntity.paymentType = paymentType;
+        ordersEntity.originalPrice = originalPrice;
+        ordersEntity.discountPercent = discountPercent;
+        ordersEntity.discountedPrice = discountedPrice;
+        ordersEntity.cancelYn = cancelYn;
+        ordersEntity.orderGoodEntities.addAll(orderGoodEntities);
 
-        return orders;
+        return ordersEntity;
     }
 
 }

@@ -19,8 +19,7 @@ import java.util.List;
 @Table(indexes = {
         @Index(columnList = "menuId")
 })
-//XXX 이후민 : entity는 suffix로 Entity 붙이는건 어때요?
-public class OrderGoods {
+public class OrderGoodsEntity {
 
     @Id
     private Long id;
@@ -40,33 +39,32 @@ public class OrderGoods {
     @Column(precision = 5, scale = 2)
     private BigDecimal discountedPrice;
 
-    //XXX 이후민 : 일급 컬렉션을 사용해보는건 어때요? https://bgpark.tistory.com/156
     @JoinColumn(name = "order_goods_id")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private final List<OrderGoods> options = new ArrayList<>();
+    private final List<OrderGoodsEntity> options = new ArrayList<>();
 
-    public List<OrderGoods> addOptions(List<OrderGoods> options) {
+    public List<OrderGoodsEntity> addOptions(List<OrderGoodsEntity> options) {
         this.options.addAll(options);
         return this.options;
     }
 
-    public List<OrderGoods> removeOptions(List<OrderGoods> options) {
+    public List<OrderGoodsEntity> removeOptions(List<OrderGoodsEntity> options) {
         this.options.removeAll(options);
         return this.options;
     }
 
-    public static OrderGoods create(Long menuId, Long parentMenuId, BigDecimal originalPrice,
-                                    BigDecimal discountPercent, BigDecimal discountedPrice, List<OrderGoods> options) {
-        OrderGoods orderGoods = new OrderGoods();
+    public static OrderGoodsEntity create(Long menuId, Long parentMenuId, BigDecimal originalPrice,
+                                          BigDecimal discountPercent, BigDecimal discountedPrice, List<OrderGoodsEntity> options) {
+        OrderGoodsEntity orderGoodsEntity = new OrderGoodsEntity();
 
-        orderGoods.menuId = menuId;
-        orderGoods.parentMenuId = parentMenuId;
-        orderGoods.originalPrice = originalPrice;
-        orderGoods.discountPercent = discountPercent;
-        orderGoods.discountedPrice = discountedPrice;
-        orderGoods.options.addAll(options);
+        orderGoodsEntity.menuId = menuId;
+        orderGoodsEntity.parentMenuId = parentMenuId;
+        orderGoodsEntity.originalPrice = originalPrice;
+        orderGoodsEntity.discountPercent = discountPercent;
+        orderGoodsEntity.discountedPrice = discountedPrice;
+        orderGoodsEntity.options.addAll(options);
 
-        return orderGoods;
+        return orderGoodsEntity;
     }
 
 }
