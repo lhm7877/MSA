@@ -41,7 +41,7 @@ public class CouponEntity {
 
     private String productId;       // 제품 id
     private String productName;     // 제품 명 (ex. 아이스아메리카노)
-    private int productPrice;       // 할인금액
+    private int productPrice;       // 제품 금액
     private String couponNumber;    // 쿠폰번호 (ex. 3154-1355-1832-1234)
     private Long memberId;          // 쿠폰 사용자
 
