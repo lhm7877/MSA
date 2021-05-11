@@ -7,5 +7,5 @@ import reactor.core.publisher.Mono;
 
 @Repository
 public interface MemberRepository extends ReactiveCrudRepository<Member, String> {
-    Mono<Member> findByMemberId(int memberId);
+    Mono<Member> findByMemberId(Mono<Integer> memberId);
 }

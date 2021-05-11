@@ -22,7 +22,7 @@ public class MemberController implements MemberService {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        return memberRepository.findByMemberId(memberId);
+        return memberRepository.findByMemberId(Mono.just(memberId));
     }
     
     @Override
