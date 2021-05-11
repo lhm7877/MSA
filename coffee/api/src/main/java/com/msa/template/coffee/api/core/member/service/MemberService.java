@@ -1,9 +1,7 @@
 package com.msa.template.coffee.api.core.member.service;
 
-import com.msa.template.coffee.api.core.member.model.Member;
+import com.msa.template.coffee.api.core.member.dto.Member;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Flux;

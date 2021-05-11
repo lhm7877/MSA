@@ -1,4 +1,4 @@
-package com.msa.template.coffee.api.core.member.model;
+package com.msa.template.coffee.api.core.member.dto;
 
 import java.time.LocalDateTime;
 

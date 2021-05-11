@@ -1,6 +1,6 @@
 package com.msa.template.coffee.memberservice.repository;
 
-import com.msa.template.coffee.api.core.member.model.Member;
+import com.msa.template.coffee.api.core.member.dto.Member;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
