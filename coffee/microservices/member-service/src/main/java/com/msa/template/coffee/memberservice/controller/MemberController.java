@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.lang.reflect.Member;
-
 @RestController
 @RequiredArgsConstructor
 public class MemberController implements MemberService {
@@ -17,9 +15,18 @@ public class MemberController implements MemberService {
     private final MemberRepository memberRepository;
     
     @Override
-    public Mono<Member> memberById(int memberId) throws Exception {
+    public Mono<Member> memberById(int memberId) {
         if( memberId < 1)
-            throw new Exception();
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         return memberRepository.findByMemberId(memberId);
+    }
+    
+    @Override
+    public Flux<Member> memberList() {
+        return null;
     }
 }
