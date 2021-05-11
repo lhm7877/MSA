@@ -64,13 +64,22 @@ api 하나씩 개발해보기
 
 ### API 요청하기
 - 후민 - 상품 리스트 가져오기 / 상품 가져오기 dto 수정
-- 동기 - 멤버 유효성 체크
+- 동기 - 멤버 유효성 체크 (사람 있는지 확인)
 - 정호 - 쿠폰 확인(상품,멤버id)
 - 락원 - 리뷰 ?? 확인
 - 진원 - 주문 하기
 
 ### GCP에 올리기
+### ProductComposite에 구현
 
 ### 패키지 구조 통일하기
 push 전에 coffee build 해보고 올리기
 test 까지 패키지 통일
+
+### TODO
+- 공통 - package 구조 통일 (test까지) / utf-8 인코딩 / GCP 올리기(webclient가 이거 바라보도록)(도전과제) / coffee build 해보기 / ProductComposite로 테스트
+- 동기 - enum string 변경, api 요청하기 ProductComposite 까지 구현
+- 후민 - GCP 올리기
+- 락원 - DB 비동기 / ProductComosite 테스트 / GCP 올리기
+- 정호 - mapper 추가 / dto 변경 / mongodb 연결해서 테스트 / service 상속 구현 / enum 통일 / ProductComposite
+- 진원 - GCP 올리기 / ProductComposite로 테스트
