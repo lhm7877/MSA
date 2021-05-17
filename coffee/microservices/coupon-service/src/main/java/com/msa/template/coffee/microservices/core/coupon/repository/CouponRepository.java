@@ -1,6 +1,6 @@
-package com.msa.template.coffee.couponservice.repository;
+package com.msa.template.coffee.microservices.core.coupon.repository;
 
-import com.msa.template.coffee.couponservice.entity.CouponEntity;
+import com.msa.template.coffee.microservices.core.coupon.entity.CouponEntity;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

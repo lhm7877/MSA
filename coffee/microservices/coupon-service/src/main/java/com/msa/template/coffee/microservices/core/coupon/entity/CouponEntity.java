@@ -4,7 +4,6 @@ import lombok.Getter;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -39,10 +38,12 @@ public class CouponEntity {
     @GeneratedValue
     private int couponId;
 
+    @Indexed(unique = true)
+    private String couponNumber;    // 쿠폰번호 (ex. 3154-1355-1832-1234)
+
     private String productId;       // 제품 id
     private String productName;     // 제품 명 (ex. 아이스아메리카노)
-    private int productPrice;       // 할인금액
-    private String couponNumber;    // 쿠폰번호 (ex. 3154-1355-1832-1234)
+    private int productPrice;       // 제품금액
     private Long memberId;          // 쿠폰 사용자
 
     @Enumerated(EnumType.STRING)
