@@ -1,23 +1,15 @@
 package com.msa.template.coffee.api.core.review.dto;
 
+import java.util.List;
+
+import com.msa.template.coffee.api.core.review.vo.ReviewVo;
+
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Getter
-public class ReviewDto extends BaseDto {
+public class ReviewDto extends BaseDto<ReviewVo> {
 
-    private long userId;
-    private long productId;
-    private String contents;
-    private int rating;
-    private String createDate;
-
-    public ReviewDto(long userId, long productId, String contents, int rating, LocalDateTime lastUpdateDate) {
-        this.userId = userId;
-        this.productId = productId;
-        this.contents = contents;
-        this.rating = rating;
-        this.createDate = localDateTimeToString(lastUpdateDate);
+    public ReviewDto(List<ReviewVo> reviewVoList) {
+        this.data = reviewVoList;
     }
 }

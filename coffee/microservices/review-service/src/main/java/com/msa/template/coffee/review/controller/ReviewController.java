@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.msa.template.coffee.api.core.review.dto.ReviewDto;
 import com.msa.template.coffee.api.core.review.service.ReviewService;
+import com.msa.template.coffee.api.core.review.vo.ReviewVo;
 import com.msa.template.coffee.review.exception.InvalidInputException;
 import com.msa.template.coffee.review.repository.ReviewRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
 @Slf4j
@@ -27,20 +29,21 @@ public class ReviewController implements ReviewService{
     private final ReviewRepository reviewRepository;
 
     @Override
-    public Flux<ReviewDto> getReviewsByProductId(int productId) {
+    public Mono<ReviewDto> getReviewsByProductId(int productId) {
         if( productId < 1)
             throw new InvalidInputException("Invalid productId : " + productId);
-        return asyncFlux(getByProductId(productId));
+
+        return Mono.fromCallable(() -> getByProductId(productId));
     }
 
-    protected List<ReviewDto> getByProductId(long productId) {
-        List<ReviewDto> reviewDtoList = reviewRepository.findAllByProductId(productId).stream()
-                .map(e -> new ReviewDto(e.getUserId(), e.getProductId(), e.getContents(),e.getRating(), e.getUpdatedDate()))
+    protected ReviewDto getByProductId(long productId) {
+        List<ReviewVo> reviewVoList = reviewRepository.findAllByProductId(productId).stream()
+                .map(e -> new ReviewVo(e.getUserId(), e.getProductId(), e.getContents(),e.getRating(), e.getUpdatedDate()))
                 .collect(toList());
 
-        log.debug("getByProductId : response size : {}", reviewDtoList.size());
+        log.debug("getByProductId : response size : {}", reviewVoList.size());
 
-        return reviewDtoList;
+        return new ReviewDto(reviewVoList);
 
     }
 

@@ -32,16 +32,16 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	}
 
 	@Override
-	public Flux<ReviewDto> getReviewsByProductId(int productId) {
+	public Mono<ReviewDto> getReviewsByProductId(int productId) {
 		String url = reviewServiceUrl + "/review?productId=" + productId;
 
 		// log.debug("API URL : ", url);
 		return webClient.get()
 				.uri(url)
 				.retrieve()
-				.bodyToFlux(ReviewDto.class)
+				.bodyToMono(ReviewDto.class)
 				.log()
-				.onErrorResume(error -> empty());
+				.onErrorResume(error -> Mono.empty());
 
 	}
 
