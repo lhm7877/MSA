@@ -6,16 +6,19 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 @Document(collection = "coupon_history")
 public class CouponHistoryEntity {
 
-    @Id @Column(name = "coupon_history_id")
+    @Id
     private Long id;
 
-    private String date;
+    @Version
+    private Integer version;
 
     private Long couponId;
+    private String date;
 
     @Enumerated(EnumType.STRING)
     private CouponStatus couponStatus;
