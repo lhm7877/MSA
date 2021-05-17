@@ -1,4 +1,4 @@
-package com.msa.template.coffee.couponservice.entity;
+package com.msa.template.coffee.microservices.core.coupon.entity;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

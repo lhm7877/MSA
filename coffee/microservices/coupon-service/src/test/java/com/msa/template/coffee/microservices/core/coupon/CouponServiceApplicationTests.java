@@ -1,4 +1,4 @@
-package com.msa.template.coffee.couponservice;
+package com.msa.template.coffee.microservices.core.coupon;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

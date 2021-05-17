@@ -1,4 +1,4 @@
-package com.msa.template.coffee.couponservice;
+package com.msa.template.coffee.microservices.core.coupon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
