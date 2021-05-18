@@ -1,7 +1,13 @@
-use coffee_product
-db.product.insert({
-"product_id" : 1,
-"name" : "아메리카노",
-"content" : "물 탄 커피",
-"price" : 1000
-})
+create table product.product
+(
+product_id serial not null
+constraint product_pk
+primary key,
+name       varchar(64),
+price      numeric,
+content    varchar(200)
+);
+
+alter table product.product
+owner to postgres;
+

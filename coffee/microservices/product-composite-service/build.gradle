@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.msa.template.coffee'
+group = 'com.msa.template.coffee.microservices.composite.product'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

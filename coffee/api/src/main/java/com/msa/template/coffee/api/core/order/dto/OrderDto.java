@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 public class OrderDto {
     @NonNull
-    private Long memberSn;
+    private Long memberId;
     @NonNull
     private PaymentType paymentType;
     private BigDecimal originalPrice;
