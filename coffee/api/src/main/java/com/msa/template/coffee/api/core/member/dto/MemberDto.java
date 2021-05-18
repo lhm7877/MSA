@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class Member {
+public class MemberDto {
     private String id;
     private String username;
     private String name;

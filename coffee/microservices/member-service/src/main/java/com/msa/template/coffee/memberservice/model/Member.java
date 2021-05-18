@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 public class Member {
     @Id
     @GeneratedValue
-    private int id;
+    private String id;
     
     private String username;
     

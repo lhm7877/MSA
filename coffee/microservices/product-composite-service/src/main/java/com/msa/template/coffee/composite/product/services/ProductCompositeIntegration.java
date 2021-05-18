@@ -2,7 +2,7 @@ package com.msa.template.coffee.composite.product.services;
 
 import static reactor.core.publisher.Flux.*;
 
-import com.msa.template.coffee.api.core.member.dto.Member;
+import com.msa.template.coffee.api.core.member.dto.MemberDto;
 import com.msa.template.coffee.api.core.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -97,17 +97,23 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	}
 	
 	@Override
-	public Mono<Member> memberById(int memberId) {
+	public Mono<MemberDto> memberById(int memberId) {
 		String url = "http://localhost:8080/member";
+		
+		return webClient.post()
+				.uri(url)
+				.bodyValue(memberId)
+				.retrieve()
+				.bodyToMono(MemberDto.class);
+	}
+	
+	@Override
+	public Flux<MemberDto> memberList() {
+		String url = "http://localhost:8080/members";
 		
 		return webClient.get()
 				.uri(url)
 				.retrieve()
-				.bodyToMono(Member.class);
-	}
-	
-	@Override
-	public Flux<Member> memberList() {
-		return null;
+				.bodyToFlux(MemberDto.class);
 	}
 }
