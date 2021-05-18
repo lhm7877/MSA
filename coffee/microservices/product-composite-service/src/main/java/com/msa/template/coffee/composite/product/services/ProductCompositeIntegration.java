@@ -2,6 +2,8 @@ package com.msa.template.coffee.composite.product.services;
 
 import static reactor.core.publisher.Flux.*;
 
+import com.msa.template.coffee.api.core.member.dto.Member;
+import com.msa.template.coffee.api.core.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -19,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 @Slf4j
-public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService {
+public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService, MemberService {
 
 	private final WebClient webClient;
 
@@ -91,6 +93,21 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 
 	@Override
 	public Flux<OrderLoadDto> getList(int memberId) {
+		return null;
+	}
+	
+	@Override
+	public Mono<Member> memberById(int memberId) {
+		String url = "http://localhost:8080/member";
+		
+		return webClient.get()
+				.uri(url)
+				.retrieve()
+				.bodyToMono(Member.class);
+	}
+	
+	@Override
+	public Flux<Member> memberList() {
 		return null;
 	}
 }
