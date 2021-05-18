@@ -1,7 +1,6 @@
 package com.msa.template.coffee.api.core.coupon.service;
 
 import com.msa.template.coffee.api.core.coupon.dto.CouponDto;
-import com.msa.template.coffee.api.core.coupon.dto.UseCouponDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,5 +29,5 @@ public interface CouponService {
     @PostMapping(
             value = "/coupon/use",
             produces = "application/json")
-    Mono<Boolean> use(UseCouponDto rq);
+    Mono<Boolean> use(CouponDto rq);
 }
