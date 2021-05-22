@@ -1,6 +1,6 @@
-package com.msa.template.coffee.orderservice.repository;
+package com.msa.template.coffee.microservice.core.order.repository;
 
-import com.msa.template.coffee.orderservice.entity.OrdersEntity;
+import com.msa.template.coffee.microservice.core.order.entity.OrdersEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

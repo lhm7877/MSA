@@ -1,10 +1,12 @@
-package com.msa.template.coffee.orderservice.entity;
+package com.msa.template.coffee.microservice.core.order.entity;
 
 import lombok.Getter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
@@ -22,6 +24,7 @@ import java.util.List;
 public class OrderGoodsEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
