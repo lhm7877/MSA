@@ -1,4 +1,4 @@
-package com.msa.template.coffee.orderservice.entity;
+package com.msa.template.coffee.microservice.core.order.entity;
 
 import com.msa.template.coffee.api.core.order.enums.PaymentType;
 import lombok.Getter;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
@@ -26,6 +28,7 @@ import java.util.List;
 public class OrdersEntity extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     /* 주문 번호에 해당하는 회원은 변경 불가 */
@@ -44,7 +47,7 @@ public class OrdersEntity extends BaseEntity {
     @Column(precision = 5, scale = 2)
     private BigDecimal discountedPrice;
 
-    private boolean cancelYn;
+    private boolean cancelYn = false;
 
     private String cancelReason;
 
