@@ -1,4 +1,4 @@
-package com.msa.template.coffee.orderservice.entity;
+package com.msa.template.coffee.microservice.core.order.entity;
 
 import lombok.Getter;
 import lombok.Setter;

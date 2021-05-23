@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 public interface OrderService {
 	@PostMapping(
 		value    = "/order",
@@ -24,5 +26,5 @@ public interface OrderService {
 	@GetMapping(
 			value    = "/order/list/{memberId}",
 			produces = "application/json")
-	Flux<OrderLoadDto> getList(@PathVariable int memberId);
+	Mono<List<OrderLoadDto>> getList(@PathVariable int memberId);
 }

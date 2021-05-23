@@ -1,10 +1,10 @@
-package com.msa.template.coffee.orderservice;
+package com.msa.template.coffee.couponservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 // @SpringBootTest
-class OrdersEntityServiceApplicationTests {
+class CouponServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
