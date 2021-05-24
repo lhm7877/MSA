@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface CouponService {
 
@@ -15,10 +15,10 @@ public interface CouponService {
             consumes = "application/json",
             produces = "application/json"
     )
-    CouponDto createCoupon(@RequestBody CouponDto couponDto);
+    Mono<CouponDto> createCoupon(@RequestBody CouponDto couponDto);
 
     @GetMapping(
             value    = "/coupon/{memberId}",
             produces = "application/json")
-    List<CouponDto> getList(@PathVariable Long memberId);
+    Flux<CouponDto> getList(@PathVariable Long memberId);
 }

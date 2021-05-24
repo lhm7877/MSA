@@ -16,7 +16,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-//@DataMongoTest
 @SpringBootTest(webEnvironment=RANDOM_PORT, properties = {"spring.data.mongodb.port: 27017"})
 public class CouponServiceImpleTest {
 

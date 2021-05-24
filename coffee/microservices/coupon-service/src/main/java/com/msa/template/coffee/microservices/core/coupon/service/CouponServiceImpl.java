@@ -9,9 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 public class CouponServiceImpl implements CouponService {
@@ -29,39 +28,24 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public CouponDto createCoupon(CouponDto couponDto) {
-        try {
-            CouponEntity entity = mapper.convertToEntity(couponDto);
-            CouponEntity newEntity = repository.save(entity);
+    public Mono<CouponDto> createCoupon(CouponDto couponDto) {
 
-            logger.debug("===================create couponDto===================");
-            logger.debug(newEntity.toString());
+        if(couponDto.getMemberId() < 1)
+            throw new InvalidInputException("Invalid memberId : " + couponDto.getMemberId());
 
-            return mapper.convertToDto(newEntity);
-
-        }catch (Exception e){
-            logger.error(e.getMessage());
-            throw new InvalidInputException(e.getMessage());
-        }
+        CouponEntity entity = mapper.convertToEntity(couponDto);
+        return repository.save(entity)
+                .log()
+                .map(e -> mapper.convertToDto(e));
     }
 
     @Override
-    public List<CouponDto> getList(Long memberId) {
+    public Flux<CouponDto> getList(Long memberId) {
+        if(memberId < 1)
+            throw new InvalidInputException("Invalid memberId : " + memberId);
 
-        try {
-            List<CouponDto> couponDtoList = repository.findByMemberId(memberId).stream()
-                    .map(entity -> mapper.convertToDto(entity))
-                    .collect(Collectors.toList());
-
-            for (CouponDto couponDto : couponDtoList){
-                logger.debug(couponDto.toString());
-            }
-
-            return couponDtoList;
-
-        } catch (Exception e){
-            logger.error(e.getMessage());
-            throw new InvalidInputException(e.getMessage());
-        }
+        return repository.findByMemberId(memberId)
+                .log()
+                .map(e -> mapper.convertToDto(e));
     }
 }

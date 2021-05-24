@@ -21,44 +21,44 @@ public class CouponServiceTest {
 	private CouponRepository repository;
 	private CouponEntity savedEntity;
 
-	@Before
-	public void setupDb(){
-		System.out.println("Set up DB!!!");
-		repository.deleteAll();
-
-		CouponEntity entity = new CouponEntity("coupon-number1", "product-id", "product-name", 3500, 1L, new Date(System.currentTimeMillis()), CouponStatus.UNUSED);
-		savedEntity = repository.save(entity);
-	}
-
-
-	@Test
-	public void create(){
-		CouponEntity entity = new CouponEntity("coupon-number2", "product-id", "product-name", 3000, 1L, new Date(System.currentTimeMillis()), CouponStatus.UNUSED);
-		savedEntity = repository.save(entity);
-
-		List<CouponEntity> findEntityList = repository.findByMemberId(1L);
-		System.out.println("===============================");
-		System.out.println("==                          ===");
-		System.out.println("==            create        ===");
-		System.out.println("==                          ===");
-		System.out.println("===============================");
-		for(CouponEntity couponEntity : findEntityList){
-			System.out.println(couponEntity);
-		}
-	}
-
-	@Test
-	public void findByMemberId(){
-		List<CouponEntity> findEntityList = repository.findByMemberId(1L);
-		System.out.println("===============================");
-		System.out.println("==                          ===");
-		System.out.println("==            find          ===");
-		System.out.println("==                          ===");
-		System.out.println("===============================");
-		for(CouponEntity couponEntity : findEntityList){
-			System.out.println(couponEntity);
-		}
-	}
+//	@Before
+//	public void setupDb(){
+//		System.out.println("Set up DB!!!");
+//		repository.deleteAll();
+//
+//		CouponEntity entity = new CouponEntity("coupon-number1", "product-id", "product-name", 3500, 1L, new Date(System.currentTimeMillis()), CouponStatus.UNUSED);
+//		savedEntity = repository.save(entity);
+//	}
+//
+//
+//	@Test
+//	public void create(){
+//		CouponEntity entity = new CouponEntity("coupon-number2", "product-id", "product-name", 3000, 1L, new Date(System.currentTimeMillis()), CouponStatus.UNUSED);
+//		savedEntity = repository.save(entity);
+//
+//		List<CouponEntity> findEntityList = repository.findByMemberId(1L);
+//		System.out.println("===============================");
+//		System.out.println("==                          ===");
+//		System.out.println("==            create        ===");
+//		System.out.println("==                          ===");
+//		System.out.println("===============================");
+//		for(CouponEntity couponEntity : findEntityList){
+//			System.out.println(couponEntity);
+//		}
+//	}
+//
+//	@Test
+//	public void findByMemberId(){
+//		List<CouponEntity> findEntityList = repository.findByMemberId(1L);
+//		System.out.println("===============================");
+//		System.out.println("==                          ===");
+//		System.out.println("==            find          ===");
+//		System.out.println("==                          ===");
+//		System.out.println("===============================");
+//		for(CouponEntity couponEntity : findEntityList){
+//			System.out.println(couponEntity);
+//		}
+//	}
 
 	/*
 	Set up DB!!!
