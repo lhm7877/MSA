@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -25,14 +26,14 @@ public class CouponServiceTest {
 		System.out.println("Set up DB!!!");
 		repository.deleteAll();
 
-		CouponEntity entity = new CouponEntity("coupon-number1", "product-id", "product-name", 3500, 1L, "2021-05-24 11:51:13", CouponStatus.UNUSED);
+		CouponEntity entity = new CouponEntity("coupon-number1", "product-id", "product-name", 3500, 1L, new Date(System.currentTimeMillis()), CouponStatus.UNUSED);
 		savedEntity = repository.save(entity);
 	}
 
 
 	@Test
 	public void create(){
-		CouponEntity entity = new CouponEntity("coupon-number2", "product-id", "product-name", 3000, 1L, "2021-05-24 11:51:13", CouponStatus.UNUSED);
+		CouponEntity entity = new CouponEntity("coupon-number2", "product-id", "product-name", 3000, 1L, new Date(System.currentTimeMillis()), CouponStatus.UNUSED);
 		savedEntity = repository.save(entity);
 
 		List<CouponEntity> findEntityList = repository.findByMemberId(1L);
