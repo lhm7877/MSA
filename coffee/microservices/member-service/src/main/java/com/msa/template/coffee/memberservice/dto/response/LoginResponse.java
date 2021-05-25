@@ -1,4 +1,4 @@
-package com.msa.template.coffee.memberservice.auth.dto.response;
+package com.msa.template.coffee.memberservice.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

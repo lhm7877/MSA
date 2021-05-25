@@ -1,8 +1,13 @@
-package com.msa.template.coffee.api.core.member.model;
+package com.msa.template.coffee.api.core.member.dto;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-public class Member {
+@Getter
+@Setter
+public class MemberDto {
     private String id;
     private String username;
     private String name;
