@@ -20,6 +20,9 @@ import com.msa.template.coffee.api.core.review.service.ReviewService;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
+
 @Slf4j
 public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService, MemberService {
 
@@ -92,7 +95,7 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	}
 
 	@Override
-	public Flux<OrderLoadDto> getList(int memberId) {
+	public Mono<List<OrderLoadDto>> getList(int memberId) {
 		return null;
 	}
 	

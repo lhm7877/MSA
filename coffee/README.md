@@ -77,9 +77,13 @@ push 전에 coffee build 해보고 올리기
 test 까지 패키지 통일
 
 ### TODO
-- 공통 - package 구조 통일 (test까지) / utf-8 인코딩 / GCP 올리기(webclient가 이거 바라보도록)(도전과제) / coffee build 해보기 / ProductComposite로 테스트
+- 공통 - package 구조 통일 (test까지) / utf-8 인코딩 / GCP 올리기 webclient가 이거 바라보도록 / coffee build 해보기 / ProductComposite로 테스트 / GCP에 올려서 테스트
 - 동기 - enum string 변경, api 요청하기 ProductComposite 까지 구현
 - 후민 - GCP 올리기
 - 락원 - DB 비동기 / ProductComosite 테스트 / GCP 올리기
 - 정호 - mapper 추가 / dto 변경 / mongodb 연결해서 테스트 / service 상속 구현 / enum 통일 / ProductComposite
-- 진원 - GCP 올리기 / ProductComposite로 테스트
+- 진원 - GCP 올리기 / 레포지터리 저장, 조회 비동기 처리 로그 찍어가며 테스트 해오기
+
+Mono.Fromcallable / r2dbc 차이
+
+

@@ -1,14 +1,14 @@
-package com.msa.template.coffee.orderservice.services;
+package com.msa.template.coffee.microservice.core.order.services;
 
 import com.msa.template.coffee.api.core.order.dto.OrderCancelDto;
 import com.msa.template.coffee.api.core.order.dto.OrderDto;
 import com.msa.template.coffee.api.core.order.dto.OrderLoadDto;
 import com.msa.template.coffee.api.core.order.dto.SuccessDto;
 import com.msa.template.coffee.api.core.order.service.OrderService;
-import com.msa.template.coffee.orderservice.entity.OrdersEntity;
-import com.msa.template.coffee.orderservice.entity.OrdersHistoryEntity;
-import com.msa.template.coffee.orderservice.repository.OrdersHistoryRepository;
-import com.msa.template.coffee.orderservice.repository.OrdersRepository;
+import com.msa.template.coffee.microservice.core.order.entity.OrdersEntity;
+import com.msa.template.coffee.microservice.core.order.repository.OrdersRepository;
+import com.msa.template.coffee.microservice.core.order.entity.OrdersHistoryEntity;
+import com.msa.template.coffee.microservice.core.order.repository.OrdersHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,7 +76,7 @@ public class OrderServiceImpl implements OrderService {
         */
         OrdersEntity ordersEntity =
                 ordersRepository.findByIdAndMemberId(orderCancelDto.getOrderId(), orderCancelDto.getMemberId())
-                        .orElseGet(com.msa.template.coffee.orderservice.entity.OrdersEntity::new);
+                        .orElseGet(OrdersEntity::new);
 
         ordersEntity.cancelOrder(orderCancelDto.getCancelReason());
 
@@ -92,7 +92,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Flux<OrderLoadDto> getList(int memberId) {
+    public Mono<List<OrderLoadDto>> getList(int memberId) {
+        return Mono.fromCallable(() -> getOrderLoads(memberId))
+                .subscribeOn(scheduler);
+    }
+
+    private List<OrderLoadDto> getOrderLoads(int memberId) {
         /*
          API member service
          checkMemberSn();
@@ -105,12 +110,8 @@ public class OrderServiceImpl implements OrderService {
         for (OrdersEntity order : orders) {
             orderLoads.add(orderMapper.apiToEntity(order));
         }
-
-        return asyncFlux(orderLoads);
+        return orderLoads;
     }
 
-    private <T> Flux<T> asyncFlux(Iterable<T> iterable) {
-        return Flux.fromIterable(iterable).publishOn(scheduler);
-    }
 
 }
