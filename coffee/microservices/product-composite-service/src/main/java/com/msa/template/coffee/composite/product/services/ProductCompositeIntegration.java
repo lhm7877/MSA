@@ -2,6 +2,8 @@ package com.msa.template.coffee.composite.product.services;
 
 import static reactor.core.publisher.Flux.*;
 
+import com.msa.template.coffee.api.core.coupon.dto.CouponDto;
+import com.msa.template.coffee.api.core.coupon.service.CouponService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -22,7 +24,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @Slf4j
-public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService {
+public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService, CouponService {
 
 	private final WebClient webClient;
 
@@ -95,5 +97,24 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	@Override
 	public Mono<List<OrderLoadDto>> getList(int memberId) {
 		return null;
+	}
+
+	@Override
+	public Mono<CouponDto> createCoupon(CouponDto couponDto) {
+		return webClient.post()
+				.uri("/coupon")
+				.bodyValue(couponDto)
+				.retrieve()
+				.bodyToMono(CouponDto.class)
+				.log();
+	}
+
+	@Override
+	public Flux<CouponDto> getList(Long memberId) {
+		return webClient.get()
+				.uri("/coupon" + memberId)
+				.retrieve()
+				.bodyToFlux(CouponDto.class)
+				.log();
 	}
 }
