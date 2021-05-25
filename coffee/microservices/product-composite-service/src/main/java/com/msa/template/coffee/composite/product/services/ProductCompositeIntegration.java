@@ -2,6 +2,8 @@ package com.msa.template.coffee.composite.product.services;
 
 import static reactor.core.publisher.Flux.*;
 
+import com.msa.template.coffee.api.core.coupon.dto.CouponDto;
+import com.msa.template.coffee.api.core.coupon.service.CouponService;
 import com.msa.template.coffee.api.core.member.dto.MemberDto;
 import com.msa.template.coffee.api.core.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +26,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @Slf4j
-public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService, MemberService {
+public class ProductCompositeIntegration implements ProductService, ReviewService, OrderService, CouponService, MemberService {
 
 	private final WebClient webClient;
 
@@ -58,7 +60,7 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 
 	@Override
 	public Flux<ProductDto> getProducts() {
-		String url = "http://localhost:8080/products";
+		String url = "http://34.145.11.228:8080/products";
 
 		return webClient.get()
 			.uri(url)
@@ -98,25 +100,44 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	public Mono<List<OrderLoadDto>> getList(int memberId) {
 		return null;
 	}
-	
+
 	@Override
 	public Mono<MemberDto> memberById(int memberId) {
 		String url = "http://localhost:8080/member";
-		
+
 		return webClient.post()
 				.uri(url)
 				.bodyValue(memberId)
 				.retrieve()
 				.bodyToMono(MemberDto.class);
 	}
-	
+
 	@Override
 	public Flux<MemberDto> memberList() {
 		String url = "http://localhost:8080/members";
-		
+
 		return webClient.get()
 				.uri(url)
 				.retrieve()
 				.bodyToFlux(MemberDto.class);
+	}
+
+	@Override
+	public Mono<CouponDto> createCoupon(CouponDto couponDto) {
+		return webClient.post()
+				.uri("/coupon")
+				.bodyValue(couponDto)
+				.retrieve()
+				.bodyToMono(CouponDto.class)
+				.log();
+	}
+
+	@Override
+	public Flux<CouponDto> getList(Long memberId) {
+		return webClient.get()
+				.uri("/coupon" + memberId)
+				.retrieve()
+				.bodyToFlux(CouponDto.class)
+				.log();
 	}
 }
