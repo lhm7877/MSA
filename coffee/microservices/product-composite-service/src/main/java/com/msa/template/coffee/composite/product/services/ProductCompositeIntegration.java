@@ -56,7 +56,7 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 
 	@Override
 	public Flux<ProductDto> getProducts() {
-		String url = "http://localhost:8080/products";
+		String url = "http://34.145.11.228:8080/products";
 
 		return webClient.get()
 			.uri(url)
