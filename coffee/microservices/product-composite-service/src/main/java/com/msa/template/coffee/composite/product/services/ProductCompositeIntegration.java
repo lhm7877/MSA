@@ -34,6 +34,10 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	@Value("${coffee.review.api-url}")
 	private String reviewServiceUrl;
 
+	@Value("${coffee.order-api}")
+	private String orderServiceUrl;
+
+
 	public ProductCompositeIntegration(WebClient.Builder webClientBuilder) {
 		this.webClient = webClientBuilder.build();
 	}
@@ -72,7 +76,6 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 
 	@Override
 	public Mono<SuccessDto> order(OrderDto rq) {
-		String orderServiceUrl = "localhost";
 		final String url = orderServiceUrl + "/order";
 		/*
          API member service
