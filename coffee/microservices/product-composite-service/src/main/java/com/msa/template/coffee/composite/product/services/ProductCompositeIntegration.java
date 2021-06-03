@@ -37,6 +37,9 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 	@Value("${coffee.order-api}")
 	private String orderServiceUrl;
 
+	@Value("${coffee.product-api}")
+	private String productServiceUrl;
+
 
 	public ProductCompositeIntegration(WebClient.Builder webClientBuilder) {
 		this.webClient = webClientBuilder.build();
@@ -64,7 +67,7 @@ public class ProductCompositeIntegration implements ProductService, ReviewServic
 
 	@Override
 	public Flux<ProductDto> getProducts() {
-		String url = "http://34.145.11.228:8080/products";
+		String url = productServiceUrl + "/products";
 
 		return webClient.get()
 			.uri(url)
