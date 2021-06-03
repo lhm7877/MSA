@@ -2,5 +2,5 @@ coffee:
   review-api: 11.11.11.11
   order-api: 34.145.69.243
   member-api: 11.11.11.11
-  product-api: 11.11.11.11
+  product-api: http://34.145.11.228:8080
   coupon-api: 11.11.11.11
